@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -12,6 +14,20 @@ public class Hangman {
             charsOfCountry[i] += country.charAt(i);
         }
         return charsOfCountry;
+    }
+
+    public static char[] removeCharGuessFromAlbhabeat(char guessCharacter, char[] alphabeat){
+        //char[] remainingAlphabeat = new char[alphabeat.length];
+
+        for (int i = 0; i < alphabeat.length; i++) {
+            if (alphabeat[i] == guessCharacter){
+                alphabeat[i] = '-';
+            } else {
+
+            }
+        }
+
+        return alphabeat;
     }
 
 
@@ -56,6 +72,10 @@ public class Hangman {
         int numberOfWrongGuess = 0;
         int remainingGuess= 6;
         DrawHangman currentHangman= new DrawHangman();
+        //ArrayList<Character> alphabeat = new ArrayList<Character>();
+
+        char [] alphabeat = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
 
         System.out.println("\nWelcome to hangman, you can only guess wrong 6 times!");
         System.out.println("Do you want to play easy or hard mode? press 1 for easy or 2 for hard");
@@ -69,9 +89,14 @@ public class Hangman {
         System.out.println(updatedWordToGuess);
 
         do {
+
             System.out.println("what Character do you think is in the word");
 
             char inputChar = scanner.next().toLowerCase(Locale.ROOT).charAt(0);
+
+            //printer mulige karaktere, som ikke er valgt endnu
+            alphabeat = removeCharGuessFromAlbhabeat(inputChar, alphabeat);
+            System.out.println("option of characters:\n" + Arrays.toString(alphabeat));
 
             updatedWordToGuess = tjekIfCharecterIsInCountry(inputChar, country, updatedWordToGuess);
 
