@@ -32,3 +32,6 @@ A simple text-based Hangman game implemented in Java. Try to guess the name of a
 - Make your guesses count, as you only have six chances.
 - Correctly guessing the entire word wins the game.
 - Running out of chances results in a loss.
+
+## Demo
+![](https://github.com/Rasmussw/testDraw/blob/master/Hangman-mp4.gif)
