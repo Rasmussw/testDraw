@@ -1,17 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class DrawHangman {
+public class DrawHangman extends JPanel{
     private JFrame j = new JFrame();
 
     public void deleteFrame(){
         j.dispose();
     }
 
+
     public void drawHangman(int howManyWrongGuesses) {
         j.setSize(1000, 1000);
         j.setVisible(true);
-        j.setBackground(Color.WHITE);
 
 
         switch (howManyWrongGuesses) {

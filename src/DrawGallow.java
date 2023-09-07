@@ -8,6 +8,7 @@ public class DrawGallow extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
+
         //Gallow
         g.drawLine(400,700,400,100);
         g.drawLine(400,100,800,100);

@@ -16,11 +16,11 @@ public class Hangman {
         return charsOfCountry;
     }
 
-    public static char[] removeCharGuessFromAlbhabeat(char guessCharacter, char[] alphabeat){
-        //char[] remainingAlphabeat = new char[alphabeat.length];
+    public static char[] removeCharGuessFromAlbhabeat(char guessCharacter, char[] alphabeat) {
+        // char[] remainingAlphabeat = new char[alphabeat.length];
 
         for (int i = 0; i < alphabeat.length; i++) {
-            if (alphabeat[i] == guessCharacter){
+            if (alphabeat[i] == guessCharacter) {
                 alphabeat[i] = '-';
             } else {
 
@@ -29,7 +29,6 @@ public class Hangman {
 
         return alphabeat;
     }
-
 
     public static String tjekIfCharecterIsInCountry(char inputCharacter, char[] country, String wordTo_) {
         char[] arrayOfCountry = country;
@@ -50,7 +49,7 @@ public class Hangman {
         return updatedGuessedChar;
     }
 
-    public static String getHiddenWord(char[] countryChars){
+    public static String getHiddenWord(char[] countryChars) {
         String hiddenWord = "";
         for (int i = 0; i < countryChars.length; i++) {
             if (countryChars[i] == ' ') {
@@ -62,25 +61,22 @@ public class Hangman {
         return hiddenWord;
     }
 
-    public static void getCharToIndex0Uppercase (){
+    public static void getCharToIndex0Uppercase() {
 
     }
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numberOfWrongGuess = 0;
-        int remainingGuess= 6;
-        DrawHangman currentHangman= new DrawHangman();
-        //ArrayList<Character> alphabeat = new ArrayList<Character>();
+        int remainingGuess = 6;
+        DrawHangman currentHangman = new DrawHangman();
+        // ArrayList<Character> alphabeat = new ArrayList<Character>();
 
-        char [] alphabeat = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-
+        char[] alphabeat = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
         System.out.println("\nWelcome to hangman, you can only guess wrong 6 times!");
         System.out.println("Do you want to play easy or hard mode? press 1 for easy or 2 for hard");
         int hardOrEasyMode = scanner.nextInt();
-
 
         char[] country = countryStringToCharArray(hardOrEasyMode);
         String updatedWordToGuess = getHiddenWord(country);
@@ -94,7 +90,7 @@ public class Hangman {
 
             char inputChar = scanner.next().toLowerCase(Locale.ROOT).charAt(0);
 
-            //printer mulige karaktere, som ikke er valgt endnu
+            // printer mulige karaktere, som ikke er valgt endnu
             alphabeat = removeCharGuessFromAlbhabeat(inputChar, alphabeat);
             System.out.println("option of characters:\n" + Arrays.toString(alphabeat));
 
@@ -104,14 +100,14 @@ public class Hangman {
                 numberOfWrongGuess++;
             }
 
-            System.out.println(updatedWordToGuess +"\nYou can guess wrong " + (remainingGuess - numberOfWrongGuess) +
+            System.out.println(updatedWordToGuess + "\nYou can guess wrong " + (remainingGuess - numberOfWrongGuess) +
                     " times until you lose");
 
-            //sletter den gamle frame
+            // sletter den gamle frame
             currentHangman.deleteFrame();
 
-            //tegner galge + kropsdele
-            currentHangman.drawHangman(remainingGuess-numberOfWrongGuess);
+            // tegner galge + kropsdele
+            currentHangman.drawHangman(remainingGuess - numberOfWrongGuess);
 
         } while (numberOfWrongGuess < 6 && updatedWordToGuess.contains("_"));
 
@@ -120,7 +116,7 @@ public class Hangman {
         } else {
             System.out.println("you lose...");
 
-            //til at få ordet fra char array til string
+            // til at få ordet fra char array til string
             String countryString = "";
 
             for (int i = 0; i < country.length; i++) {
